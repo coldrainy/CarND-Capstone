@@ -36,6 +36,7 @@ namespace waypoint_follower
 
 void PurePursuit::callbackFromCurrentPose(const geometry_msgs::PoseStampedConstPtr &msg)
 {
+  std::cout<<"come into the call backpose"<<std::endl;
   current_pose_.header = msg->header;
   current_pose_.pose = msg->pose;
   pose_set_ = true;
@@ -389,7 +390,7 @@ geometry_msgs::TwistStamped PurePursuit::go()
     return outputZero();
   }
 
-  // ROS_INFO("next_target : ( %lf , %lf , %lf)", next_target.x, next_target.y,next_target.z);
+   //ROS_INFO("next_target : ( %lf , %lf , %lf)", next_target.x, next_target.y,next_target.z);
 
   return outputTwist(calcTwist(calcCurvature(position_of_next_target_), getCmdVelocity(0)));
 
